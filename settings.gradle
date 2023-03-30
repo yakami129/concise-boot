@@ -1,0 +1,13 @@
+rootProject.name = 'concise-boot'
+
+include 'domain-example'
+include 'domain-user'
+include 'library-infrastructure-common'
+include 'library-infrastructure'
+include 'library-infrastructure-rpc'
+include 'library-testing'
+include 'platform-gateway'
+include 'platform-security'
+
+
+

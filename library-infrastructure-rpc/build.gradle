@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+}
+
+description = "rpc基础设施"
+group = 'com.github.yakami.library.library.infrastructure.rpc'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+bootJar.enabled = false
+jar.enabled = true
+
+dependencies {
+
+    compileOnly project(":library-infrastructure")
+
+    // dubbo starter
+    compile "org.apache.dubbo:dubbo:${dubboVersion}"
+    compile "org.apache.dubbo:dubbo-spring-boot-starter:${dubboVersion}"
+    compile "org.apache.dubbo:dubbo-registry-nacos:${dubboVersion}"
+    compile 'com.alibaba.spring:spring-context-support:1.0.11'
+
+    // nacos starter
+    compile "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config:${nacosVerison}"
+    compile "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:${nacosVerison}"
+    compile "org.springframework.cloud:spring-cloud-starter-bootstrap"
+
+    testImplementation project(":library-testing")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
